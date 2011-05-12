@@ -53,6 +53,8 @@ namespace HashCracker
             FoundPassword = null;
             Progress = Last = 0;
             UpdateCounter = 10;
+
+            comboAlgo.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -266,7 +268,7 @@ namespace HashCracker
             if (count != chars.Length)
             {
                 e.Cancel = true;
-                MessageBox.Show("Byla zadána neplatná znaková sada!");
+                MessageBox.Show("Byla zadána neplatná znaková sada!","Chyba",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
@@ -344,16 +346,16 @@ namespace HashCracker
             // Ověř, zda byl zadán platný hexadecimální hash
             char[] allowedChars = {'0','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f'};
 
-            int matching = (from c in textHash.Text.ToLower().ToCharArray()
-                            from a in allowedChars
-                            where a == c
-                            select c).Count();
-
-            if (matching != textHash.Text.Length)
+            for (int i = 0; i < textHash.Text.Length; i++)
             {
-                e.Cancel = true;
-                MessageBox.Show("Byl zadán neplatný hash!");
+                if (!allowedChars.Contains(textHash.Text[i]))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Byl zadán neplatný hash!","Chyba",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+
             }
+
         }
 
         #endregion

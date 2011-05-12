@@ -89,6 +89,7 @@
             // 
             // numericLength
             // 
+            this.numericLength.CausesValidation = false;
             this.numericLength.Location = new System.Drawing.Point(103, 73);
             this.numericLength.Maximum = new decimal(new int[] {
             8,
@@ -120,6 +121,8 @@
             // 
             // comboAlgo
             // 
+            this.comboAlgo.CausesValidation = false;
+            this.comboAlgo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAlgo.FormattingEnabled = true;
             this.comboAlgo.Items.AddRange(new object[] {
             "MD5",
@@ -252,6 +255,7 @@
             this.Controls.Add(this.groupInput);
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prolamovač hashí";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.groupInput.ResumeLayout(false);
