@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupInput = new System.Windows.Forms.GroupBox();
             this.textCharset = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numericLength = new System.Windows.Forms.NumericUpDown();
@@ -47,27 +47,27 @@
             this.buttonStartStop = new System.Windows.Forms.Button();
             this.timerUpdater = new System.Windows.Forms.Timer(this.components);
             this.labelResult = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.groupInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericLength)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupInput
             // 
-            this.groupBox1.Controls.Add(this.textCharset);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.numericLength);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboAlgo);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textHash);
-            this.groupBox1.Controls.Add(this.labelHash);
-            this.groupBox1.Location = new System.Drawing.Point(2, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(291, 136);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Zadání";
+            this.groupInput.Controls.Add(this.textCharset);
+            this.groupInput.Controls.Add(this.label3);
+            this.groupInput.Controls.Add(this.numericLength);
+            this.groupInput.Controls.Add(this.label2);
+            this.groupInput.Controls.Add(this.comboAlgo);
+            this.groupInput.Controls.Add(this.label1);
+            this.groupInput.Controls.Add(this.textHash);
+            this.groupInput.Controls.Add(this.labelHash);
+            this.groupInput.Location = new System.Drawing.Point(2, 3);
+            this.groupInput.Name = "groupInput";
+            this.groupInput.Size = new System.Drawing.Size(291, 136);
+            this.groupInput.TabIndex = 0;
+            this.groupInput.TabStop = false;
+            this.groupInput.Text = "Zadání";
             // 
             // textCharset
             // 
@@ -120,12 +120,12 @@
             // 
             // comboAlgo
             // 
-            this.comboAlgo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboAlgo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAlgo.FormattingEnabled = true;
             this.comboAlgo.Items.AddRange(new object[] {
             "MD5",
-            "SHA256"});
+            "SHA1",
+            "SHA256",
+            "MD160"});
             this.comboAlgo.Location = new System.Drawing.Point(103, 45);
             this.comboAlgo.Name = "comboAlgo";
             this.comboAlgo.Size = new System.Drawing.Size(121, 21);
@@ -146,6 +146,7 @@
             this.textHash.Name = "textHash";
             this.textHash.Size = new System.Drawing.Size(234, 20);
             this.textHash.TabIndex = 1;
+            this.textHash.Validating += new System.ComponentModel.CancelEventHandler(this.textHash_Validating);
             // 
             // labelHash
             // 
@@ -211,6 +212,7 @@
             this.progressTotal.Location = new System.Drawing.Point(6, 77);
             this.progressTotal.Name = "progressTotal";
             this.progressTotal.Size = new System.Drawing.Size(279, 23);
+            this.progressTotal.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressTotal.TabIndex = 0;
             // 
             // buttonStartStop
@@ -222,6 +224,11 @@
             this.buttonStartStop.Text = "Spustit";
             this.buttonStartStop.UseVisualStyleBackColor = true;
             this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
+            // 
+            // timerUpdater
+            // 
+            this.timerUpdater.Enabled = true;
+            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
             // 
             // labelResult
             // 
@@ -242,13 +249,13 @@
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.buttonStartStop);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupInput);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Prolamovač hashí";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupInput.ResumeLayout(false);
+            this.groupInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericLength)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -259,7 +266,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupInput;
         private System.Windows.Forms.NumericUpDown numericLength;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboAlgo;
