@@ -70,7 +70,7 @@ namespace HashCracker
 
             List<int> Ret = new List<int>();
             
-            if (Base == 10)
+            if (Base == 10) // Když se jedná o převod do desítkové soustavy, tak jen rozsekej číslo na jednotlivé cifry
                 return Number.ToString().ToCharArray().Cast<int>().ToArray();
 
             int digit = 0;
@@ -353,9 +353,7 @@ namespace HashCracker
                     e.Cancel = true;
                     MessageBox.Show("Byl zadán neplatný hash!","Chyba",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
-
             }
-
         }
 
         #endregion

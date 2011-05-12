@@ -253,6 +253,7 @@
             this.Controls.Add(this.buttonStartStop);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
