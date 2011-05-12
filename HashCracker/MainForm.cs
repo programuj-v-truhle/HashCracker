@@ -66,9 +66,15 @@ namespace HashCracker
         private int[] ConvertToBase(UInt64 Number, int Base)
         {
             if (Base <= 1)
-                throw new ArgumentException();
+                throw new ArgumentException();            
 
             List<int> Ret = new List<int>();
+
+            if (Number == 0)
+            {
+                Ret.Add(0);
+                return Ret.ToArray();
+            }
             
             if (Base == 10) // Když se jedná o převod do desítkové soustavy, tak jen rozsekej číslo na jednotlivé cifry
                 return Number.ToString().ToCharArray().Cast<int>().ToArray();
